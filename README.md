@@ -1,4 +1,4 @@
-# Ranger quit then cd working directory
+# Quit ranger then cd working directory
 
 ## Description
 
