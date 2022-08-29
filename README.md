@@ -19,10 +19,9 @@ Sometime you need to open a terminal on ranger working directory to do some jobs
     function ranger_func {
         ranger $*
         local quit_cd_wd_file="$HOME/.ranger_quit_cd_wd"
-        local quit_cd_wd="$(cat $quit_cd_wd_file)"
-        if [ -n $quit_cd_wd ]; then
-            cd $quit_cd_wd
-            true > $quit_cd_wd_file
+        if [ -s "$quit_cd_wd_file" ]; then
+            cd "$(cat $quit_cd_wd_file)"
+            true > "$quit_cd_wd_file"
         fi
     }
 
