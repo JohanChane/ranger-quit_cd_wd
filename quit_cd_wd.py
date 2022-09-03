@@ -2,7 +2,9 @@ import ranger.api
 from ranger.api.commands import *
 import os
 
-QUIT_CD_WD_FILE = '$HOME/.ranger_quit_cd_wd'
+def save_wd(command):
+    with open(os.path.expanduser('~/.ranger_quit_cd_wd'), 'w') as f:
+        f.write(command.fm.thisdir.path);
 
 class quit_cd_wd(Command):
     """:chdir to working directory of ranger after quiting on ranger.
@@ -18,7 +20,7 @@ class quit_cd_wd(Command):
         if len(self.fm.tabs) >= 2:
             self.fm.tab_close()
         else:
-            os.system('echo $PWD > ' + QUIT_CD_WD_FILE)
+            save_wd(self)
             self._exit_no_work()
 
 class quitall_cd_wd(Command):
@@ -32,5 +34,5 @@ class quitall_cd_wd(Command):
             self.fm.exit()
 
     def execute(self):
-        os.system('echo $PWD > ' + QUIT_CD_WD_FILE)
+        save_wd(self)
         self._exit_no_work()
