@@ -7,7 +7,13 @@ Sometime you need to open a terminal on ranger working directory to do some jobs
 ## Installation
 
 1.  Copy `quit_cd_wd.py` to `${XDG_CONFIG_HOME}/ranger/plugins`.
-2.  Add the following mapping to the `rc.conf`
+
+    ```sh
+    curl -fLo ${XDG_CONFIG_HOME:-~/.config}/ranger/plugins/quit_cd_wd.py --create-dirs \
+            https://raw.githubusercontent.com/JohanChane/ranger-quit_cd_wd/main/quit_cd_wd.py
+    ```
+
+3.  Add the following mapping to the `rc.conf`
 
     ```
     map     x quit_cd_wd
