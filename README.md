@@ -19,6 +19,7 @@ Sometime you need to open a terminal on ranger working directory to do some jobs
     map     x quit_cd_wd
     map     X quitall_cd_wd
     ```
+
 3.  Add the following to your shell rcfile (e.g. `.bashrc, .zshrc`)
 
     ```sh
@@ -31,5 +32,5 @@ Sometime you need to open a terminal on ranger working directory to do some jobs
         fi
     }
 
-    alias ranger='ranger_func'
+    alias rn='ranger_func'
     ```
