@@ -16,21 +16,20 @@ Sometime you need to open a terminal on ranger working directory to do some jobs
 3.  Add the following mapping to the `rc.conf`
 
     ```
-    map     x quit_cd_wd
     map     X quitall_cd_wd
     ```
 
 3.  Add the following to your shell rcfile (e.g. `.bashrc, .zshrc`)
 
     ```sh
-    function ranger_func {
+    function ranger_wrapper {
         ranger $*
-        local quit_cd_wd_file="$HOME/.ranger_quit_cd_wd"
+        local quit_cd_wd_file="$HOME/.cache/ranger/quit_cd_wd"
         if [ -s "$quit_cd_wd_file" ]; then
             cd "$(cat $quit_cd_wd_file)"
             true > "$quit_cd_wd_file"
         fi
     }
 
-    alias rn='ranger_func'
+    alias rng='ranger_wrapper'
     ```
