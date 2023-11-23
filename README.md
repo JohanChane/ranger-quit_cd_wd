@@ -23,7 +23,7 @@ Sometime you need to open a terminal on ranger working directory to do some jobs
 
     ```sh
     function ranger_wrapper {
-        ranger $*
+        /usr/bin/ranger $*
         local quit_cd_wd_file="$HOME/.cache/ranger/quit_cd_wd"
         if [ -s "$quit_cd_wd_file" ]; then
             cd "$(cat $quit_cd_wd_file)"
