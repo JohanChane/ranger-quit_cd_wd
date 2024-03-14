@@ -1,4 +1,3 @@
-from __future__ import (absolute_import, division, print_function)
 import os
 from ranger.api.commands import Command
 
@@ -17,6 +16,9 @@ class quitall_cd_wd(Command):
         self._exit_no_work()
 
     def save_wd(self):
-        with open(os.path.expanduser('~/.cache/ranger/quit_cd_wd'), 'w') as f:
+        wd_file_path = os.path.expanduser('~/.cache/ranger/quit_cd_wd')
+        wd_dir_path = os.path.dirname(wd_file_path)
+        if not os.path.exists(wd_dir_path):
+            os.makedirs(wd_dir_path)
+        with open(wd_file_path, 'w') as f:
             f.write(self.fm.thisdir.path);
-
