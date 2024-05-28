@@ -16,7 +16,10 @@ class quitall_cd_wd(Command):
         self._exit_no_work()
 
     def save_wd(self):
-        wd_file_path = os.path.expanduser('~/.cache/ranger/quit_cd_wd')
+        if len(self.args) > 1:
+            wd_file_path=self.arg(1)
+        else:
+            wd_file_path='~/.cache/ranger/quit_cd_wd'
         wd_dir_path = os.path.dirname(wd_file_path)
         if not os.path.exists(wd_dir_path):
             os.makedirs(wd_dir_path)
