@@ -27,8 +27,8 @@ Sometime you need to open a terminal on ranger working directory to do some jobs
     function ranger {
       local quit_cd_wd_file="$HOME/.cache/ranger/quit_cd_wd"
       #command ranger "$@"
-      # OR add `map Q quitall_cd_wd ...`
-      command ranger --cmd="map Q quitall_cd_wd $quit_cd_wd_file" "$@"
+      # OR add `map X quitall_cd_wd ...`
+      command ranger --cmd="map X quitall_cd_wd $quit_cd_wd_file" "$@"
       if [ -s "$quit_cd_wd_file" ]; then
         cd "$(cat $quit_cd_wd_file)"
         true > "$quit_cd_wd_file"
