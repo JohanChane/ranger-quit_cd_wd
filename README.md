@@ -16,8 +16,9 @@ Sometime you need to open a terminal on ranger working directory to do some jobs
 2.  [optional] Add the following mapping to the `rc.conf`
 
     ```
+    # Equivalent to `map X quitall_cd_wd ~/.cache/ranger/quit_cd_wd`
     map     X quitall_cd_wd
-    # OR
+    # OR customize the path
     map     X quitall_cd_wd <file_saved_wd>
     ```
 
@@ -25,9 +26,9 @@ Sometime you need to open a terminal on ranger working directory to do some jobs
 
     ```sh
     function ranger {
-      local quit_cd_wd_file="$HOME/.cache/ranger/quit_cd_wd"
-      #command ranger "$@"
-      # OR add `map X quitall_cd_wd ...`
+      local quit_cd_wd_file="$HOME/.cache/ranger/quit_cd_wd"        # The path must be the same as <file_saved_wd> in map.
+      #command ranger "$@"              # If you have already added the map to rc.conf
+      # OR add `map X quitall_cd_wd ...` if you don't want to add the map in rc.conf
       command ranger --cmd="map X quitall_cd_wd $quit_cd_wd_file" "$@"
       if [ -s "$quit_cd_wd_file" ]; then
         cd "$(cat $quit_cd_wd_file)"
